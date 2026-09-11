@@ -1,0 +1,22 @@
+# Copy to .github/workflows/test.yml after `gh auth refresh -s workflow`.
+# GitHub refused this path on an OAuth token without the workflow scope.
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Engine tests
+        run: npm test

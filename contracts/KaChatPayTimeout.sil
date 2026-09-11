@@ -1,0 +1,19 @@
+pragma silverscript ^0.1.0;
+
+// Copied from kns/contracts/v1/KaChatPayTimeout.sil for this PoC.
+// Matches kaspanet/silverscript tests/examples/transfer_with_timeout.sil.
+// Pin compiler v1.0.0 (3ed9733). Language pragma in official examples is still ^0.1.0.
+// stillpay. Network pin is in JS (testnet-10 vs mainnet), not in this script.
+// Not USD. Recipient claims with no time gate; sender reclaims after tx.time (Unix ms).
+// Do not take miner fees from locked sompi — sponsor input pays mass.
+
+contract KaChatPayTimeout(pubkey sender, pubkey recipient, temporal timeout) {
+    entry transfer(sig recipientSig) {
+        require(checkSig(recipientSig, recipient));
+    }
+
+    entry reclaim(sig senderSig) {
+        require(checkSig(senderSig, sender));
+        require(tx.time >= timeout);
+    }
+}

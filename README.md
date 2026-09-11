@@ -27,6 +27,8 @@ Parker already journaled a receipt series on TN10 (6 Sep 2026). This repo does n
 
 Compiler pin: SilverScript **v1.0.0**. No foreign `readInputState`. The `.sil` does not yet lock output value — do not skim principal for fees.
 
+GitHub pulse (what moved): [docs/GITHUB-PULSE.md](docs/GITHUB-PULSE.md).
+
 Sister classroom that **will depeg**: [STP-KAS/peglab-stp](https://github.com/STP-KAS/peglab-stp). Do not list tPEG as money here.
 
 MIT. No warranty.

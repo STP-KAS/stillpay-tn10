@@ -124,7 +124,7 @@ export function timeoutDemo({path = 'claim'} = {}) {
   } catch (err) {
     tooEarly = err.code;
   }
-  steps.push({title: 'Reclaim before timeout', code: tooEarly, lesson: 'TOO_EARLY. Same as TransferWithTimeout timeout() entry.'});
+  steps.push({title: 'Reclaim before timeout', code: tooEarly, lesson: 'TOO_EARLY. Same as KaChatPayTimeout reclaim(); tx.time >= timeout.'});
   if (path === 'reclaim') {
     const done = reclaimTimeout(lock, {reclaimer: sender, now: timeout, sponsorFee: fee});
     lock = done.lock;

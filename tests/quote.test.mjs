@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {describe, it} from 'node:test';
 import {ReceiptError} from '../src/receipt.mjs';
+import {CAIP2, NETWORK} from '../src/domain.mjs';
 import {acceptPayment, makeQuote, paymentRequired, toX402PaymentRequired, QUOTE_SCHEME} from '../src/quote.mjs';
 
 const sender = 'aa'.repeat(32);
@@ -21,8 +22,11 @@ describe('quote and 402', () => {
     const mapped = toX402PaymentRequired(quote);
     assert.equal(mapped.doNotSend, true);
     assert.equal(mapped.draftMapper, true);
-    assert.equal(mapped.wouldMapTo.x402Version, 2);
-    assert.equal(quote.signed, false);
+    assert.equal(mapped.wouldMapTo.accepts[0].network, CAIP2);
+    assert.equal(quote.network, NETWORK);
+    assert.equal(body.payment.quote.signed, false);
+    quote.signed = true;
+    assert.equal(body.payment.quote.signed, false);
   });
 
   it('refuses tPEG/USD, mixed buttons, and facilitator-shaped proofs', () => {
@@ -43,6 +47,7 @@ describe('quote and 402', () => {
     assert.equal(ok.ok, true);
     assert.equal(ok.engineSpec, true);
     assert.equal(ok.signed, false);
+    assert.match(ok.label, /not an accepted txid/i);
     throwsQuote(() => makeQuote({sender, recipient: sender, sompi: 1n, timeout, now, nonce}), 'SELF');
   });
 });

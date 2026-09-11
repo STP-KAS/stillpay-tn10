@@ -1,4 +1,4 @@
-// Best-practice receipt PoC. Parker rules, PegLab teaching scale.
+// Receipt ENGINE_SPEC. Parker rules. Teaching cap is MAX_SOMPI.
 // One unit = one locked sompi. No dollar oracle. Sponsor pays fees.
 // This is not tPEG and not USD.
 

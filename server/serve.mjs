@@ -41,11 +41,12 @@ const server = http.createServer((req, res) => {
   fs.readFile(file, (err, buf) => {
     if (err) {
       res.writeHead(404);
-      res.end('not found');
+      res.end(method === 'HEAD' ? undefined : 'not found');
       return;
     }
-    res.writeHead(200, {'content-type': types[path.extname(file)] || 'application/octet-stream'});
-    res.end(buf);
+    const type = types[path.extname(file)] || 'application/octet-stream';
+    res.writeHead(200, {'content-type': type, 'content-length': buf.length});
+    res.end(method === 'HEAD' ? undefined : buf);
   });
 });
 

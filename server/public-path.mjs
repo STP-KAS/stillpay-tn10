@@ -27,7 +27,7 @@ export function resolvePublic(root, pathname) {
   if (!rel || rel.startsWith('..') || path.isAbsolute(rel)) return null;
   const segs = rel.split(path.sep);
   const lower = segs.map((s) => s.toLowerCase());
-  if (lower.includes('.git') || lower.includes('.local') || lower.includes('.env')) return null;
+  if (lower.some((s) => s === '.git' || s === '.local' || s === '.env' || s.startsWith('.env.'))) return null;
   if (ALLOWED_TOP.has(lower[0])) return file;
   if (segs.length === 1 && ALLOWED_ROOT.has(segs[0])) return file;
   return null;

@@ -2,10 +2,10 @@
 // Production agents should bind elldeeone/kaspa-x402 exact/standard-native.
 // This object is what a KaChat quote and a 402 body share.
 
-import {LOCK_TIME_THRESHOLD, MAX_SOMPI, NETWORK, PROJECT, ReceiptError} from './domain.mjs';
+import {CAIP2, LOCK_TIME_THRESHOLD, MAX_SOMPI, NETWORK, PROJECT, ReceiptError} from './domain.mjs';
 
 export const QUOTE_SCHEME = `${PROJECT}-quote-v1`;
-export const CAIP2 = NETWORK === 'mainnet' ? 'kaspa:mainnet' : 'kaspa:testnet-10';
+export {CAIP2};
 export const X402_NOTE =
   'Local ENGINE_SPEC only. Do not treat this as x402 v2. elldeeone/kaspa-x402 is TN10 alpha; it is not a stillpay submitter.';
 
@@ -79,7 +79,7 @@ export function paymentRequired(quote) {
       exp: quote.timeout,
       nonce: quote.nonce,
       postage: quote.postage,
-      quote,
+      quote: {...quote, signed: false},
     },
     x402: {
       binding: 'none-yet',

@@ -1,0 +1,15 @@
+{
+  "name": "stillpay-tn10",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Stillpay on Kaspa Testnet-10. 1 unit = 1 locked sompi. Timeout claim/reclaim. Not USD. Not mainnet.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/receipt.test.mjs tests/timeout.test.mjs tests/quote.test.mjs tests/public-path.test.mjs tests/network.test.mjs",
+    "serve": "node server/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>stillpay — Testnet-10</title>
+  <link rel="stylesheet" href="/web/style.css">
+</head>
+<body>
+  <div class="banner">TESTNET-10 · STILLPAY · NOT USD · kaspatest: ONLY</div>
+  <header>
+    <p class="muted">STP-KAS / stillpay-tn10 · sister: stillpay-mainnet</p>
+    <h1>A number that stays still on Testnet-10.</h1>
+    <p class="lead">1 unit = 1 locked sompi. Claim now or reclaim after timeout. This page does not broadcast. Addresses are <code>kaspatest:</code>.</p>
+  </header>
+  <main>
+    <h2>Receipt (ENGINE_SPEC)</h2>
+    <p><button id="run" type="button">Run receipt</button></p>
+    <pre id="demo">Click. No node.</pre>
+    <h2>Timeout</h2>
+    <p>
+      <button id="run-timeout-claim" type="button">Claim path</button>
+      <button id="run-timeout" type="button">Reclaim path</button>
+    </p>
+    <pre id="timeout-out">Recipient may claim now. Sender waits.</pre>
+    <h2>Local 402 (not x402 v2)</h2>
+    <p class="muted">Unsigned quote. Bind elldeeone on TN10 for agents.</p>
+    <p><button id="run-402" type="button">Show 402 body</button></p>
+    <pre id="quote-out">stillpay-quote-v1</pre>
+  </main>
+  <footer>MIT. Mainnet is a different GitHub. tPEG is not this product.</footer>
+  <script type="module" src="/web/app.js"></script>
+</body>
+</html>

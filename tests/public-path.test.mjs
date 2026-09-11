@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {describe, it} from 'node:test';
 import {resolvePublic} from '../server/public-path.mjs';
 
-const root = path.resolve('C:\\Users\\Remco\\stillpay-tn10');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 describe('public path allowlist', () => {
   it('serves the demo page and engines', () => {
@@ -11,7 +12,7 @@ describe('public path allowlist', () => {
     assert.ok(resolvePublic(root, '/web/index.html'));
     assert.ok(resolvePublic(root, '/src/timeout.mjs'));
     assert.ok(resolvePublic(root, '/docs/PROTOCOL.md'));
-    assert.ok(resolvePublic(root, '/artifacts/parker-tn10-receipt.json'));
+    assert.ok(resolvePublic(root, '/artifacts/README.md'));
   });
 
   it('refuses git, keys, traversal, and server internals', () => {

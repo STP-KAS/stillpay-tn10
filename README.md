@@ -9,6 +9,8 @@ npm test
 npm run serve
 ```
 
+GitHub Actions is **not** wired (OAuth cannot push workflows). Template: `docs/github-action-test.yml`.
+
 http://127.0.0.1:8771/ — binds loopback. Addresses must be `kaspatest:`. `kaspa:` is refused.
 
 ## What is built

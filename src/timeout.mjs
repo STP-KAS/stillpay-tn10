@@ -1,7 +1,7 @@
 // ENGINE_SPEC of KaChatPayTimeout / TransferWithTimeout (silverc tutorial).
 // Recipient claims now (and still after timeout). Sender reclaims only after tx.time.
 // After timeout both paths are live until one spend. Not a dollar. Not tPEG.
-// SCRIPT_ENFORCED only when a Testnet-10 node accepts the tx.
+// SCRIPT_ENFORCED only when a node on this repo's NETWORK accepts the tx.
 
 import {LOCK_TIME_THRESHOLD, MAX_FEE, MAX_SOMPI, NETWORK, UNIT_NAME, ReceiptError} from './domain.mjs';
 

@@ -3,7 +3,7 @@
 // This is not tPEG and not USD.
 
 export {LOCK_TIME_THRESHOLD, MAX_FEE, MAX_SOMPI, NETWORK, ReceiptError, SERIES_NAME} from './domain.mjs';
-import {MAX_FEE, MAX_SOMPI, NETWORK, PROJECT, ReceiptError, SERIES_NAME} from './domain.mjs';
+import {MAX_FEE, MAX_SOMPI, NETWORK, PROJECT, ReceiptError, SERIES_NAME, UNIT_NAME} from './domain.mjs';
 
 const hex32 = (value, label = 'bytes') => {
   if (typeof value !== 'string' || !/^[0-9a-f]{64}$/i.test(value)) {
@@ -69,7 +69,7 @@ export function genesis({seriesId = 'aa'.repeat(32)} = {}) {
 export function lock(state, {owner, sompi, sponsorFee}) {
   const qty = u(sompi, {label: 'lock'});
   const fee = u(sponsorFee, {min: 1n, max: MAX_FEE, label: 'sponsorFee'});
-  if (state.lockedSompi + qty > MAX_SOMPI) throw new ReceiptError('OVER_CAP', 'Backing cap is 10 tKAS.');
+  if (state.lockedSompi + qty > MAX_SOMPI) throw new ReceiptError('OVER_CAP', `Backing cap is 10 ${UNIT_NAME}.`);
   return {
     state: {
       ...state,
@@ -145,11 +145,11 @@ export function receiptDemo() {
   };
   push('Genesis', 'Empty series. No oracle. Nothing is a dollar.');
   state = lock(state, {owner: alice, sompi: 50_000_000n, sponsorFee: fee}).state;
-  push('Lock 0.5 tKAS', 'Alice’s claim equals locked sompi. Parker’s receipt rule.');
+  push(`Lock 0.5 ${UNIT_NAME}`, 'Alice’s claim equals locked sompi. Parker’s receipt rule.');
   state = transfer(state, {from: alice, to: bob, quantity: 50_000_000n}).state;
   push('Transfer to Bob', 'Quantity and backing unchanged. Name is not authenticity.');
   state = redeem(state, {holder: bob, quantity: 20_000_000n, sponsorFee: fee}).state;
-  push('Redeem 0.2 tKAS', 'Bob gets sompi. Sponsor pays the fee. No skim.');
+  push(`Redeem 0.2 ${UNIT_NAME}`, 'Bob gets sompi. Sponsor pays the fee. No skim.');
   let skim = 'not tried';
   try {
     skimPrincipal(state, {holder: bob, quantity: 1n});

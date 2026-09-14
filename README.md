@@ -25,6 +25,8 @@ http://127.0.0.1:8771/ — binds loopback. Addresses must be `kaspatest:`. `kasp
 
 Parker already journaled a receipt series on TN10 (6 Sep 2026). This repo does not claim those txids. Next empty box: **our** TN10 lock / claim / reclaim journal.
 
+**What changed (14 Sep 2026, groks-wallet hard-test):** ENGINE_SPEC 1 sompi is **not** a constructible TN10 output (`Storage mass exceeds maximum`). kaspa-x402’s gateway floor is 10,000,000 sompi for the same KIP-9 family. groks-wallet journaled **1 tKAS** plain transfers, not `KaChatPayTimeout.sil` lock/claim/reclaim. Payload on `64057dd7…` landed; older `59b284…` is accepted with `payload: null`. Catalog: [STP-KAS/tn10-hard-test](https://github.com/STP-KAS/tn10-hard-test).
+
 Compiler pin: SilverScript **v1.0.0**. No foreign `readInputState`. The `.sil` does not yet lock output value — do not skim principal for fees.
 
 GitHub pulse (what moved): [docs/GITHUB-PULSE.md](docs/GITHUB-PULSE.md).

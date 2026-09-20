@@ -38,3 +38,12 @@ GitHub pulse (what moved): [docs/GITHUB-PULSE.md](docs/GITHUB-PULSE.md).
 Sister classroom that **will depeg**: [STP-KAS/peglab-stp](https://github.com/STP-KAS/peglab-stp). Do not list tPEG as money here.
 
 MIT. No warranty.
+
+---
+
+> **Standard disclaimer.** This GitHub, not the topic above.
+>
+> Intentions are good; thought process is questionable. STP remains delusional. Si vis pacem, para bellum.
+>
+> Intern at https://sixpack.wtf/  
+> X: https://x.com/StppStp · GitHub: https://github.com/STP-KAS
